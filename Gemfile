@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'devise'
 # switching bootstrap to rails
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
