@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   	  user = User.find_by(email: params[:session][:email].downcase)
   if user && authenticate(user, params[:session][:password_digest])
     # Sign the user in and redirect to the user's show page.
-    flash[:error] = 'correct'
+    #flash[:error] = 'correct'
     #sign_in user
     session[:user_id] = user.id
     redirect_to user

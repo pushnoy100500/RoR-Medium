@@ -1,5 +1,19 @@
-<%= link_to 'sign up', '/signup' %> | 
-<%= link_to 'sign in', '/signin' %> | 
-<%= link_to 'home', '/' %> |
-logged in as <%= session[:user_id] %> |
-<%= link_to 'Log out', '/signout', :method => :delete %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to image_tag("logo.png"), '/' %>
+    </div>
+	<ul class="nav navbar-nav navbar-right">
+	<% if(!session[:user_id]) %>
+		<li><%= link_to 'sign up', '/signup' %></li>
+		<li><%= link_to 'sign in', '/signin' %></li>
+		<% else %>
+		logged in as <%= session[:user_id] %>
+		<% path = '/users/' + session[:user_id].to_s %>
+		<li><%= link_to 'home', '/' %></li>
+		<li><%= link_to 'my profile', path %> </li>
+		<li><%= link_to 'Log out', '/signout', :method => :delete %></li>
+		<% end %>
+	</ul>
+  </div>
+</nav>
