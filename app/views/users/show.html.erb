@@ -1,3 +1,10 @@
 <img src="../images/<%= @user.image_url %>" alt="">
 <p>Username: <%= @user.user_name %></p> 
 <p>Email address: <%= @user.email %></p>	
+<%= link_to '<< back', '/users/' %>
+<% if session[:user_id] == @user.id %>
+ | <%= link_to 'New Post', new_post_path %>
+ | <%= link_to 'Edit profile', edit_user_path %>
+<% end %>
+<br>
+

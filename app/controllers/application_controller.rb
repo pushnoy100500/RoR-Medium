@@ -4,5 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  
+  def is_logged_in? 
+  		if session[:user_id]
+  		return true
+  		else
+  		return false
+  		end
+    end
 end

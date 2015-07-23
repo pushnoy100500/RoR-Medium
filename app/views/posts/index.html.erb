@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Posts</h1>
-
+<% if is_logged_in? %>
+<%= link_to 'New Post', new_post_path %>
+<% end %>
 <% @posts.each do |entry| %>
 <% if entry.is_published %>
   <div class="row post_entry">
@@ -9,40 +11,32 @@
       <img src="images/<%= entry.image_url %>" alt="">
     </div>
     <div class="col-md-10 col-md-offset-1">
-      <h3 class="post_title"><%= entry.title %></h3>
+      <h3 class="post_title"><%= entry.title %> 
+      <% if entry.user %>
+      <span class="author_ref"><i>by</i> '<%= entry.user.user_name %>'</span>
+      <% end %>
+      </h3>
     </div>
     <div class="col-md-10 col-md-offset-1">
       <p class="post_content">
         <%= entry.content %>
       </p>
-      <p><%= link_to 'Show', entry %> | <%= link_to 'Edit', edit_post_path(entry) %> | 
-        <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <p><%= link_to 'Show', entry %> 
+      <% if is_logged_in? && entry.user_id == session[:user_id] %>
+       | <%= link_to 'Edit', edit_post_path(entry) %> 
+       | <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+     
       </p>
     </div>
-
+ 
   </div>
   <% else %>
 
   <% end %>
-<% end %>
 
-<!--  <tbody>
- <%#   <% @posts.each do |post| %>
-      <tr>
-<%#     <td><%= post.user_id %></td>
-<%#     <td><%= post.slug %></td>
-<%#        <td><%= post.title %></td>
-<%#        <td><%= post.image_url %></td>
-<%#        <td><%= post.content %></td>
-<%#        <td><%= post.is_published %></td>
-<%#        <td><%= link_to 'Show', post %></td>
-<%#        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-<%#        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-<%#    <% end %>
-  </tbody>
-</table> -->
+<% end %>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+

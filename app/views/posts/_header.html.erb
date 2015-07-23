@@ -4,15 +4,16 @@
       <%= link_to image_tag("logo.png"), '/' %>
     </div>
 	<ul class="nav navbar-nav navbar-right">
-	<% if(!session[:user_id]) %>
+	<% if(!is_logged_in?) %>
 		<li><%= link_to 'sign up', '/signup' %></li>
 		<li><%= link_to 'sign in', '/signin' %></li>
 		<% else %>
-		logged in as <%= session[:user_id] %>
+		<%# logged in as <%= session[:user_id] %>
 		<% path = '/users/' + session[:user_id].to_s %>
 		<li><%= link_to 'home', '/' %></li>
 		<li><%= link_to 'my profile', path %> </li>
-		<li><%= link_to 'Log out', '/signout', :method => :delete %></li>
+		<li><%= link_to 'authors', '/users/' %></li>
+		<li><%= link_to 'Log out', '/signout', :method => :delete, data: { confirm: 'Are you sure?' } %></li>
 		<% end %>
 	</ul>
   </div>

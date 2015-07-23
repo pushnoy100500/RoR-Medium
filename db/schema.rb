@@ -31,9 +31,6 @@ ActiveRecord::Schema.define(version: 20150721231531) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
-    t.string   "remember_token"
   end
-
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

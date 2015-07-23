@@ -13,4 +13,21 @@
 	a:hover {
 		background: #fff;
 	}
+	.user_entry {
+		border: 1px solid #F6F6F6;
+		padding: 10px;
+
+		img {
+			border: 1px solid #F6F6F6;
+			box-shadow: -2px -2px 1px #F6F6F6;
+		}
+	}
+	.user_entry_description {
+		padding-top: 40px;
+		list-style-image: url('http://www.mymobile.co.in/img1/li-icon.jpg');
+
+		li {
+			padding-top: 5px;
+		}
+	}
 }

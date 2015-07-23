@@ -1,11 +1,13 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.posts {
+    .posts {
+	
 	.post_entry {
-		border: 1px solid #999;
+		border: 2px solid #F6F6F6;
 		padding: 20px;
 		width: 95%;
+
 	}
 	.post_image {
 		img {
@@ -17,11 +19,16 @@
 	}
 	.post_title {
 		text-align: left;
+		
+
 	}
 	.post_content {
 		font-size: 1.1em;
 	}
 	a:hover {
 		background: #fff;
+	}
+	.author_ref {
+		font-size: 0.75em;
 	}
 }

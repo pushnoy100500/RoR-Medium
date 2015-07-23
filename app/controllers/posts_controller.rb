@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  attr_accessor :user_id
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+
   end
 
   # GET /posts/1
@@ -14,7 +15,11 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    if is_logged_in?
     @post = Post.new
+    else
+      redirect_to '/signin/'
+    end
   end
 
   # GET /posts/1/edit
@@ -25,7 +30,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+   # @post.attributes[:user_id] = session[:user_id]
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
